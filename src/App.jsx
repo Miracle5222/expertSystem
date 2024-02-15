@@ -26,8 +26,8 @@ function App() {
         <Route index element={<Home />}></Route>
         <Route path="dashboard" element={<Dashboard />}></Route>
         <Route path="about" element={<AboutLayout />}>
-          <Route path="profile" element={<Overview />}></Route>
-          <Route path="overview" element={<Profile />}></Route>
+          <Route path="overview" element={<Overview />}></Route>
+          <Route path="profile" element={<Profile />}></Route>
         </Route>
         <Route path="rules" element={<RulesLayout />}>
           <Route path="addrule" element={<AddRule />}></Route>
