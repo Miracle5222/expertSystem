@@ -1,18 +1,34 @@
 import { useEffect, useState } from 'react';
 import { DataGrid, GridToolbar, GridToolbarFilterButton } from '@mui/x-data-grid';
-
-
-
-const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'rule', headerName: 'Rule', width: 250 },
-    { field: 'problemType', headerName: 'Problem Type', width: 150 },
-    { field: 'dateCreated', headerName: 'Date Created', width: 150 },
-    { field: 'symptoms', headerName: 'Symptoms', width: 150 },
-];
+import Button from '@mui/material/Button';
+import { CgEye } from 'react-icons/Cg';
+import { MdModeEditOutline } from 'react-icons/Md';
+import { useNavigate } from 'react-router-dom';
 
 export const DataTable = () => {
-
+    const navigate = useNavigate();
+    const columns = [
+        { field: 'id', headerName: 'ID', width: 70 },
+        { field: 'rule', headerName: 'Rule', width: 250 },
+        { field: 'problemType', headerName: 'Problem Type', width: 150 },
+        { field: 'dateCreated', headerName: 'Date Created', width: 150 },
+        {
+            field: 'symptoms',
+            headerName: 'Symptoms',
+            width: 150,
+            renderCell: (params) => (
+                <div className='flex'>
+                    {/* Pass the selected row's ID to the handleSymptomsButtonClick function */}
+                    <button onClick={() => handleSymptomsButtonClick(params.row.id)}>
+                        <CgEye className="text-[#3F51B5] text-2xl" />
+                    </button>
+                    <button onClick={() => navigate(`/rules/viewsymptoms/`)} className='mx-2'>
+                        <MdModeEditOutline className="text-[#3F51B5] text-2xl" />
+                    </button>
+                </div>
+            ),
+        },
+    ];
     const [rows, setRows] = useState([]);
 
     useEffect(() => {
@@ -31,10 +47,15 @@ export const DataTable = () => {
         };
 
         fetchData();
-    }, []); //
+    }, []);
+
+    const handleSymptomsButtonClick = (selectedRowId) => {
+        // Navigate to "rules/viewsymptoms" with the selected row's ID
+        navigate(`/rules/viewsymptoms/${selectedRowId}`);
+    };
 
     return (
-        <div style={{ height: 400, width: '100%' }}>
+        <div>
             <DataGrid
                 rows={rows}
                 columns={columns}
@@ -53,4 +74,3 @@ export const DataTable = () => {
         </div>
     );
 };
-

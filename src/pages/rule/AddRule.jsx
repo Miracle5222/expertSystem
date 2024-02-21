@@ -47,8 +47,9 @@ const AddRule = () => {
   };
 
   return (
-    <div className=''>
+    <div className='overflow-y-scroll  grid grid-cols-1 gap-8'>
       <div className='w-[80%] grid grid-cols-2 gap-8'>
+
         <form onSubmit={handleSubmit} className='bg-[#F4FCFF] p-8'>
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-600">Problem</label>
@@ -78,15 +79,16 @@ const AddRule = () => {
 
 
           <button
-           
+
             type="submit"
             className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
           >
             Submit
           </button>
         </form>
+
       </div>
-      <div className='mt-8 mb-12'><DataTable /></div>
+    
     </div>
   );
 };

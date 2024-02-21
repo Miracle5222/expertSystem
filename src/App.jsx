@@ -18,6 +18,7 @@ import Dashboard from "./pages/Dashboard";
 import RulesLayout from "./layouts/RulesLayout";
 import AddRule from "./pages/rule/AddRule";
 import ViewRule from "./pages/rule/ViewRule";
+import ViewSymptoms from "./pages/rule/ViewSymptoms";
 
 function App() {
   const router = createBrowserRouter(
@@ -31,8 +32,12 @@ function App() {
         </Route>
         <Route path="rules" element={<RulesLayout />}>
           <Route path="addrule" element={<AddRule />}></Route>
-          <Route path="viewrule" element={<ViewRule />}></Route>
+          <Route path="viewrule" element={<ViewRule />}>
+
+          </Route>
+          <Route path="viewsymptoms/:id" element={<ViewSymptoms />} />
         </Route>
+
       </Route>
     )
   );
