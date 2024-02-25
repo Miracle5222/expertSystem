@@ -40,7 +40,7 @@ export default function RootLayout() {
                 <div className="px-1">
                   <PiEngineLight className="text-[#3F51B5]" />
                 </div>
-                <NavLink to="rules">Rules</NavLink>
+                <NavLink to="rules">Rule Set</NavLink>
               </div>
             </div>
             <div className="py-1 hover:border-l-4 border-indigo-500 px-3">
